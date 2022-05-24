@@ -1,0 +1,7 @@
+__pycache__/
+
+poetry.lock
+
+*sqlite
+*sqlite-shm
+*sqlite-wal
