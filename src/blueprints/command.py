@@ -15,8 +15,7 @@ bp.labeler.vbml_ignore_case = True
 @bp.labeler.message(VBML("/ <code>"), blocking=False)
 async def execute(m: Message, code: str) -> str:
     async with connect(
-        username="qpyparty", host="176.124.206.142",
-        password="gqpy~"
+        host="127.0.0.1", port=8000
     ) as conn:
         result = await conn.run(code)
     await m.answer(
