@@ -1,3 +1,5 @@
+from re import DOTALL
+
 from asyncssh import connect
 from telefone.bot import (
     BotBlueprint, Message
@@ -6,13 +8,14 @@ from telefone.bot.rules import (
     VBML
 )
 from telefone.tools.text import markdown as md, ParseMode
+from vbml import Pattern
 
 
 bp = BotBlueprint("command")
 bp.labeler.vbml_ignore_case = True
 
 
-@bp.labeler.message(VBML("/ <code>"), blocking=False)
+@bp.labeler.message(VBML(Pattern("/ <code>", flags=DOTALL)), blocking=False)
 async def execute(m: Message, code: str) -> str:
     async with connect(
         username="qpyparty", password="gqpy~", host="localhost", known_hosts=None
